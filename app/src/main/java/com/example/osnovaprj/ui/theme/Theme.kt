@@ -34,7 +34,7 @@ data class MatuleColors(
 
 val LocalMatuleTypography = staticCompositionLocalOf {
     MatuleTextSyle(
-         headingBold32 =  TextStyle.Default,
+        headingBold32 =  TextStyle.Default,
      subTitleRegular16 = TextStyle.Default,
      bodyRegular16 = TextStyle.Default,
      bodyRegular14 = TextStyle.Default,
@@ -76,24 +76,27 @@ fun MatuleTheme(content: @Composable () -> Unit){
     )
 
     val matuleTypography = MatuleTextSyle(
-        headingBold32 = TextStyle(fontFamily = matuleFontFamily, fontWeight = FontWeight.Bold, fontSize = 32.sp),
+        headingBold32 = TextStyle(fontFamily = matuleFontFamily, fontWeight = FontWeight.Black, fontSize = 32.sp),
         subTitleRegular16 = TextStyle(fontFamily = matuleFontFamily, fontWeight = FontWeight.Normal,  fontSize = 16.sp),
         bodyRegular16 = TextStyle(fontFamily = matuleFontFamily, fontWeight = FontWeight.Normal, fontSize = 16.sp),
         bodyRegular14 = TextStyle(fontFamily = matuleFontFamily, fontWeight = FontWeight.Normal, fontSize = 16.sp),
         bodyRegular12 = TextStyle(fontFamily = matuleFontFamily, fontWeight = FontWeight.Normal, fontSize = 16.sp),
 
     )
-    CompositionLocalProvider() {
-        LocalMatuleColors provides matuleColors
-    }
-    content()
+    CompositionLocalProvider(
+        LocalMatuleColors provides matuleColors,
+        LocalMatuleTypography provides matuleTypography,
+        content = content
+        )
+
 }
 
 object MatuleTheme{
     val colors: MatuleColors
     @Composable
     get() = LocalMatuleColors.current
-    val typography
+
+    val typography: MatuleTextSyle
     @Composable
-    get() = LocalMatuleColors.current
+    get() = LocalMatuleTypography.current
 }

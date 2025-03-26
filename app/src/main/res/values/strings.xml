@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">osnovaprj</string>
+    <string name="hello">Привет!</string>
+    <string name="sign_in_subtitle">Заполните Свои данные или продолжите через социальные медиа</string>
 </resources>
