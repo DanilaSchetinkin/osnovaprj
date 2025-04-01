@@ -3,4 +3,6 @@
     <string name="hello">Привет!</string>
     <string name="sign_in_subtitle">Заполните Свои данные или продолжите через социальные медиа</string>
     <string name="template_email">xyz@gmail.com</string>
+    <string name="email">Email</string>
+    <string name="sign_in">Войти</string>
 </resources>

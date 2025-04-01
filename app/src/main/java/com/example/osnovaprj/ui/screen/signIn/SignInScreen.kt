@@ -16,6 +16,8 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
@@ -50,14 +52,16 @@ fun SignInContent(){
         val email = remember { mutableStateOf("") }
         Spacer(modifier = Modifier.height(35.dp))
         AuthTextFiled(
-            labelText = "Email",
+            labelText = stringResource(R.string.email),
             placeHolderText = stringResource(R.string.template_email),
             value = email.value,
             onChangeValue = {
                 email.value = it
             }
         )
+        CommonButton(buttonLabel = stringResource(R.string.sign_in)){
 
+        }
     }
 }
 
@@ -80,6 +84,7 @@ fun TitleWithSubtitleText(title: String, subTitle: String){
             style = MatuleTheme.typography.subTitleRegular16.copy(color = MatuleTheme.colors.subTextDark),
             textAlign = TextAlign.Center
         )
+
 
 
     }
@@ -142,4 +147,33 @@ fun AuthTextFiled(value: String, onChangeValue: (String) -> Unit, placeHolderTex
         }
     }
 
+}
+
+
+@Composable
+fun CommonButton(modifier: Modifier, buttonLabel: String, onClick: ()-> Unit){
+    Button(
+
+        modifier = modifier
+            .padding(horizontal = 20.dp)
+            .fillMaxWidth()
+            .height(50.dp)
+            .clip(RoundedCornerShape(14.dp))
+            .background(MatuleTheme.colors.accent)
+        ,
+        colors = ButtonColors(
+            containerColor = MatuleTheme.colors.accent,
+            disabledContentColor = Color.Transparent,
+            disabledContainerColor = MatuleTheme.colors.accent,
+            contentColor = Color.Transparent
+
+        ),
+        onClick = onClick
+    ) {
+        Text(
+            text = buttonLabel,
+            style = MatuleTheme.typography.bodyRegular14.copy(color = MatuleTheme.colors.background),
+            textAlign =TextAlign.Center
+        )
+    }
 }
