@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,8 +21,12 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -29,6 +34,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
@@ -39,12 +45,47 @@ import com.example.osnovaprj.ui.theme.MatuleTheme
 
 @Composable
 fun SignInScreen(){
-    SignInContent()
+    Scaffold(
+        topBar = {
+            Row (
+                modifier = Modifier
+                    .padding(top = 35.dp)
+                    .fillMaxWidth()
+                    .height(40.dp)
+            ){
+                IconButton(onClick = {}) {
+                    Icon(painter = painterResource(R.drawable.back_arrow),
+                        contentDescription = null)
+                }
+            }
+        },
+        bottomBar = {
+            Row (
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .padding(bottom = 50.dp)
+                    .fillMaxWidth()
+                    .height(40.dp)
+            ){
+                Text(text = stringResource(R.string.sign_up),
+                style = MatuleTheme.typography.bodyRegular16.copy(color = MatuleTheme.colors.text),
+                textAlign = TextAlign.Center
+                )
+            }
+        }
+    ) { paddingValues ->
+        SignInContent(paddingValues)
+    }
+
 }
 
 @Composable
-fun SignInContent(){
-    Column {
+fun SignInContent(paddingValues: PaddingValues){
+
+    Column(
+        modifier = Modifier.padding(paddingValues = paddingValues)
+    ) {
         TitleWithSubtitleText(
             title = stringResource(R.string.hello),
             subTitle = stringResource(R.string.sign_in_subtitle)
@@ -59,7 +100,10 @@ fun SignInContent(){
                 email.value = it
             }
         )
-        CommonButton(buttonLabel = stringResource(R.string.sign_in)){
+        CommonButton(
+            modifier = Modifier.padding(top = 50.dp),
+            buttonLabel = stringResource(R.string.sign_in)
+        ){
 
         }
     }
