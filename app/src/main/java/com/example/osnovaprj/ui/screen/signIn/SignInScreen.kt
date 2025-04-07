@@ -81,23 +81,37 @@ fun SignInScreen(){
 }
 
 @Composable
-fun SignInContent(paddingValues: PaddingValues){
-
+fun SignInContent(paddingValues: PaddingValues, signInViewModel: SignInViewModel){
+    val signInState = signInViewModel.signInState
     Column(
-        modifier = Modifier.padding(paddingValues = paddingValues)
-    ) {
+        modifier = Modifier.padding(paddingValues = paddingValues),
+            verticalArrangement = Arrangement.SpaceBy(16.dp)
+    )
+     {
         TitleWithSubtitleText(
             title = stringResource(R.string.hello),
             subTitle = stringResource(R.string.sign_in_subtitle)
         )
-        val email = remember { mutableStateOf("") }
+
+        /*val email = remember { mutableStateOf("") }*/
         Spacer(modifier = Modifier.height(35.dp))
+
+
         AuthTextFiled(
-            labelText = stringResource(R.string.email),
-            placeHolderText = stringResource(R.string.template_email),
-            value = email.value,
+            value = signInState.value.email,
             onChangeValue = {
-                email.value = it
+                signInViewModel.setEmail(it)
+            },
+            isError = signInViewModel.emailHasError.value,
+            placeholder = {
+                Text(text = stringResource(R.string.template_email))
+            },
+            supportingText = {
+                Text(text = stringResource("Неправильная почта"))
+            },
+
+            label = {
+                Text(text =stringResource(R.string.email))
             }
         )
         CommonButton(
