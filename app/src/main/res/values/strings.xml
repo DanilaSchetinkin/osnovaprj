@@ -6,4 +6,8 @@
     <string name="email">Email</string>
     <string name="sign_in">Войти</string>
     <string name="sign_up">Вы впервые? Создать пользователя</string>
+    <string name="uncorrect_email">Неправильная почта</string>
+    <string name="password_template">***********</string>
+    <string name="uncorrtect_password">Неправильный пароль</string>
+    <string name="password">Пароль</string>
 </resources>
