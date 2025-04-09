@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -22,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.osnovaprj.R
 import com.example.osnovaprj.ui.screen.signIn.component.AuthButton
+import com.example.osnovaprj.ui.screen.signIn.component.AuthPasswordTextField
 import com.example.osnovaprj.ui.screen.signIn.component.TitleWithSubtitleText
 import com.example.osnovaprj.ui.theme.MatuleTheme
 import com.example.osnovaprj.ui.screen.signIn.component.AuthTextField
@@ -98,23 +100,44 @@ fun SignInContent(paddingValues: PaddingValues, signInViewModel: SignInViewModel
                 Text(text =stringResource(R.string.email))
             }
         )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
 
-         AuthTextField(
-             value = signInState.value.password,
-             onChangeValue = {
-                 signInViewModel.setPassword(it)
-             },
-             isError = false,
-             placeholder = {
-                 Text(text = stringResource(R.string.password_template))
-             },
-             supportingText = {
-                 Text(text = stringResource(R.string.uncorrtect_password))
-             },
-             label = {
-                 Text(text = stringResource(R.string.password))
-             }
-         )
+        ){
+            AuthPasswordTextField(
+                value = signInState.value.password,
+                onChangeValue = {
+                    signInViewModel.setPassword(it)
+                },
+                isError = false,
+                placeholder = {
+                    Text(text = stringResource(R.string.password_template))
+                },
+                supportingText = {
+                    Text(text = stringResource(R.string.uncorrtect_password))
+                },
+                label = {
+                    Text(text = stringResource(R.string.password))
+                },
+
+                //NEW
+                trailingIcon = {
+                    IconButton(onClick = {}) {
+                    Icon(
+                        painter = painterResource(R.drawable.eye),
+                        tint = Color.Gray,
+                        contentDescription = null
+                    )
+                }}
+            )
+
+//            IconButton(onClick = {}) {
+//                Icon(painter = painterResource(R.drawable.eye),
+//                    contentDescription = null)
+//            }
+
+        }
          AuthButton(
              onClick = {}
          ) {

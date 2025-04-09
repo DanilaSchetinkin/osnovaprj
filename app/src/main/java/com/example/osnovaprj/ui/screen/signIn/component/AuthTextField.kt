@@ -35,3 +35,35 @@ fun AuthTextField(
             )
         }
 }
+
+
+//NEW
+@Composable
+fun AuthPasswordTextField(
+    value: String,
+    onChangeValue:(String)-> Unit,
+    isError: Boolean,
+    supportingText: @Composable () -> Unit,
+    placeholder: @Composable ()  -> Unit,
+    label: @Composable () -> Unit,
+    //NEW
+    trailingIcon: @Composable () -> Unit
+){
+    Column(
+        modifier = Modifier
+            .padding(horizontal = 20.dp)
+            .wrapContentSize(),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ){
+        label()
+        CommonTextField(
+            value = value,
+            onChangeValue = onChangeValue,
+            isError = isError,
+            supportingText = supportingText,
+            placeholder = placeholder,
+            //NEW
+            trailingIcon = trailingIcon
+        )
+    }
+}
