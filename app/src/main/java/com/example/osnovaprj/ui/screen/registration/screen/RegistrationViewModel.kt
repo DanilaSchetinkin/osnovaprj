@@ -14,6 +14,10 @@ class RegistrationViewModel: ViewModel(){
         !android.util.Patterns.EMAIL_ADDRESS.matcher(registrationState.value.email).matches()
     }
 
+    fun setName(name: String){
+        registrationState.value = registrationState.value.copy(name = name)
+    }
+
     fun setEmail(email: String){
         registrationState.value = registrationState.value.copy(email = email)
     }

@@ -15,12 +15,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.osnovaprj.R
+import com.example.osnovaprj.ui.screen.signIn.component.AuthNameTextField
+import com.example.osnovaprj.ui.screen.signIn.component.AuthPasswordTextField
 import com.example.osnovaprj.ui.screen.signIn.component.AuthTextField
 import com.example.osnovaprj.ui.screen.signIn.component.TitleWithSubtitleText
 import com.example.osnovaprj.ui.theme.MatuleTheme
@@ -30,7 +33,7 @@ fun Registration(){
     val registrationViewModel: RegistrationViewModel = viewModel()
     Scaffold(
         topBar = {
-            Row(
+            Row (
                 modifier = Modifier
                     .padding(top = 35.dp)
                     .fillMaxWidth()
@@ -54,7 +57,7 @@ fun Registration(){
                     .fillMaxWidth()
                     .height(40.dp)
             ){
-                Text(text = stringResource(R.string.sign_up),
+                Text(text = stringResource(R.string.ac_join),
                     style = MatuleTheme.typography.bodyRegular16.copy(color = MatuleTheme.colors.text),
                     textAlign = TextAlign.Center
                 )
@@ -68,10 +71,12 @@ fun Registration(){
 
 
     @Composable
-    fun RegistrationContent(paddingValues: PaddingValues, registrationViewModel: RegistrationViewModel){
+    fun RegistrationContent(paddingValues: PaddingValues, registrationViewModel: RegistrationViewModel) {
         val registrationState = registrationViewModel.registrationState
         Column(
-            modifier = Modifier.padding(paddingValues = paddingValues),
+            modifier = Modifier
+                .padding(paddingValues = paddingValues)
+                .padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         )
         {
@@ -83,7 +88,26 @@ fun Registration(){
 
             Spacer(modifier = Modifier.height(35.dp))
 
-    }
+
+
+            AuthNameTextField(
+                value = registrationState.value.name,
+                onChangeValue = {
+                    registrationViewModel.setName(it)
+                },
+                isError = false,
+                placeholder = {
+                    Text(text = stringResource(R.string.xxxxxxxx))
+                },
+                supportingText = {
+                    Text(text = stringResource(R.string.error_name))
+                },
+                label = {
+                    Text(text = stringResource(R.string.name))
+                }
+            )
+
+
 
             AuthTextField(
                 value = registrationState.value.email,
@@ -99,8 +123,36 @@ fun Registration(){
                 },
 
                 label = {
-                    Text(text =stringResource(R.string.email))
+                    Text(text = stringResource(R.string.email))
                 }
-                 )
-         }
+            )
+            AuthPasswordTextField(
+                value = registrationState.value.password,
+                onChangeValue = {
+                    registrationViewModel.setPassword(it)
+                },
+                isError = false,
+                placeholder = {
+                    Text(text = stringResource(R.string.password_template))
+                },
+                supportingText = {
+                    Text(text = stringResource(R.string.uncorrtect_password))
+                },
+                label = {
+                    Text(text = stringResource(R.string.password))
+                },
+
+                trailingIcon = {
+                    IconButton(onClick = {}) {
+                        Icon(
+                            painter = painterResource(R.drawable.eye),
+                            tint = Color.Gray,
+                            contentDescription = null
+                        )
+                    }
+                }
+            )
+        }
+    }
+
 

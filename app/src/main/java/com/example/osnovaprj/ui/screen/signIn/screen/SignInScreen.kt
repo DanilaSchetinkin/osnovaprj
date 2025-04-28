@@ -33,7 +33,7 @@ fun SignInScreen(){
     val signInViewModel: SignInViewModel = viewModel()
     Scaffold(
         topBar = {
-            Row (
+            Row(
                 modifier = Modifier
                     .padding(top = 35.dp)
                     .fillMaxWidth()
@@ -129,7 +129,8 @@ fun SignInContent(paddingValues: PaddingValues, signInViewModel: SignInViewModel
                         tint = Color.Gray,
                         contentDescription = null
                     )
-                }}
+                   }
+                }
             )
 
 //            IconButton(onClick = {}) {
