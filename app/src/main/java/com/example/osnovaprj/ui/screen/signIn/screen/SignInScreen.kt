@@ -53,13 +53,18 @@ fun SignInScreen(){
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
-                    .padding(bottom = 50.dp)
+                    .padding(bottom = 70.dp)
                     .fillMaxWidth()
                     .height(40.dp)
             ){
                 Text(text = stringResource(R.string.sign_up),
                 style = MatuleTheme.typography.bodyRegular16.copy(color = MatuleTheme.colors.text),
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .clickable (
+                            onClick ={}
+                        )
+
                 )
             }
         }
@@ -123,32 +128,30 @@ fun SignInContent(paddingValues: PaddingValues, signInViewModel: SignInViewModel
 
             )
 
-            Spacer(modifier = Modifier.height(15.dp))
+
 
            Text (
 
-                textAlign = TextAlign.Center,
+                textAlign = TextAlign.Right,
                 text = stringResource(R.string.recover),
-                style = MatuleTheme.typography.bodyRegular16.copy(color = MatuleTheme.colors.text),
+                style = MatuleTheme.typography.bodyRegular12.copy(color = MatuleTheme.colors.text),
                 modifier = Modifier
-                    .height(50.dp)
+                    .padding(horizontal = 20.dp)
+
+                    .fillMaxWidth()
+                    .height(16.dp)
                     .clickable(
                         onClick = {}
                     )
             )
-
-
-//            IconButton(onClick = {}) {
-//                Icon(painter = painterResource(R.drawable.eye),
-//                    contentDescription = null)
-//            }
-
-        }
          AuthButton(
              onClick = {}
          ) {
              Text(stringResource(R.string.sign_in))
          }
+
+        }
+
 
 
     }

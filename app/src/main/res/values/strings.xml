@@ -16,4 +16,5 @@
     <string name="error_name">Неправильное имя</string>
     <string name="ac_join">Есть аккаунт? Войти</string>
     <string name="recover">Восстановить</string>
+    <string name="Registration_button">Зарегистрироваться</string>
 </resources>
