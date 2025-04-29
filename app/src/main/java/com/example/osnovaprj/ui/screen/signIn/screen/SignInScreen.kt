@@ -1,5 +1,7 @@
 package com.example.osnovaprj.ui.screen.signIn.screen
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -18,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -100,11 +103,7 @@ fun SignInContent(paddingValues: PaddingValues, signInViewModel: SignInViewModel
                 Text(text =stringResource(R.string.email))
             }
         )
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
 
-        ){
             AuthPasswordTextField(
                 value = signInState.value.password,
                 onChangeValue = {
@@ -121,17 +120,23 @@ fun SignInContent(paddingValues: PaddingValues, signInViewModel: SignInViewModel
                     Text(text = stringResource(R.string.password))
                 },
 
-                //NEW
-                trailingIcon = {
-                    IconButton(onClick = {}) {
-                    Icon(
-                        painter = painterResource(R.drawable.eye),
-                        tint = Color.Gray,
-                        contentDescription = null
-                    )
-                   }
-                }
+
             )
+
+            Spacer(modifier = Modifier.height(15.dp))
+
+           Text (
+
+                textAlign = TextAlign.Center,
+                text = stringResource(R.string.recover),
+                style = MatuleTheme.typography.bodyRegular16.copy(color = MatuleTheme.colors.text),
+                modifier = Modifier
+                    .height(50.dp)
+                    .clickable(
+                        onClick = {}
+                    )
+            )
+
 
 //            IconButton(onClick = {}) {
 //                Icon(painter = painterResource(R.drawable.eye),
@@ -147,7 +152,7 @@ fun SignInContent(paddingValues: PaddingValues, signInViewModel: SignInViewModel
 
 
     }
-}
+
 
 
 

@@ -18,10 +18,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.osnovaprj.R
+import com.example.osnovaprj.ui.screen.signIn.component.AuthButton
 import com.example.osnovaprj.ui.screen.signIn.component.AuthNameTextField
 import com.example.osnovaprj.ui.screen.signIn.component.AuthPasswordTextField
 import com.example.osnovaprj.ui.screen.signIn.component.AuthTextField
@@ -140,18 +143,14 @@ fun Registration(){
                 },
                 label = {
                     Text(text = stringResource(R.string.password))
-                },
-
-                trailingIcon = {
-                    IconButton(onClick = {}) {
-                        Icon(
-                            painter = painterResource(R.drawable.eye),
-                            tint = Color.Gray,
-                            contentDescription = null
-                        )
-                    }
                 }
             )
+
+
+
+            AuthButton(onClick ={} ) {
+                Text("Зарегистрироваться")
+            }
         }
     }
 

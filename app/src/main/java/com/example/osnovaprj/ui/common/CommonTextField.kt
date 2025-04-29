@@ -14,9 +14,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.Placeholder
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.example.osnovaprj.ui.theme.MatuleTheme
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -25,8 +27,8 @@ fun CommonTextField(
     onChangeValue: (String) -> Unit,
     modifier: Modifier = Modifier,
     isError: Boolean = false,
+    trailingIcon: @Composable  (() -> Unit)? = null,
     visualTransformation: VisualTransformation = VisualTransformation.None,
-    trailingIcon: @Composable  ()-> Unit = {},
     supportingText: @Composable () -> Unit = {},
     placeholder: @Composable () -> Unit = {},
 ){
@@ -37,7 +39,8 @@ fun CommonTextField(
         modifier = modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(14.dp))
-            .background(MatuleTheme.colors.background)
+            .background(MatuleTheme.colors.background),
+        visualTransformation = visualTransformation
     ){ innerTextField -> 
         TextFieldDefaults.DecorationBox(
             value = value,
@@ -64,3 +67,4 @@ fun CommonTextField(
         
     }
 }
+
