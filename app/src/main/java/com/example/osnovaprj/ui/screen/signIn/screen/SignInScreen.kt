@@ -129,21 +129,31 @@ fun SignInContent(paddingValues: PaddingValues, signInViewModel: SignInViewModel
             )
 
 
-
-           Text (
-
-                textAlign = TextAlign.Right,
-                text = stringResource(R.string.recover),
-                style = MatuleTheme.typography.bodyRegular12.copy(color = MatuleTheme.colors.text),
+            Row (
+                horizontalArrangement = Arrangement.End,
                 modifier = Modifier
-                    .padding(horizontal = 20.dp)
 
-                    .fillMaxWidth()
                     .height(16.dp)
-                    .clickable(
-                        onClick = {}
-                    )
-            )
+                    .fillMaxWidth()
+            ) {
+
+
+
+                Text(
+
+                    textAlign = TextAlign.Right,
+                    text = stringResource(R.string.recover),
+                    style = MatuleTheme.typography.bodyRegular12.copy(color = Color.Gray),
+                    modifier = Modifier
+                        .padding(horizontal = 20.dp)
+
+
+                        .height(16.dp)
+                        .clickable(
+                            onClick = {}
+                        )
+                )
+            }
          AuthButton(
              onClick = {}
          ) {

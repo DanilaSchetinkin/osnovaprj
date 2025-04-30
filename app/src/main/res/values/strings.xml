@@ -17,4 +17,6 @@
     <string name="ac_join">Есть аккаунт? Войти</string>
     <string name="recover">Восстановить</string>
     <string name="Registration_button">Зарегистрироваться</string>
+    <string name="soglasie">Даю согласие на обработку персональных данных</string>
+    <string name="send">Отправить</string>
 </resources>

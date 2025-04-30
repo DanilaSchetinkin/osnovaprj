@@ -1,6 +1,7 @@
 package com.example.osnovaprj.ui.screen.registration.screen
 
 import android.widget.CheckBox
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -9,11 +10,16 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CheckboxColors
+import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -23,17 +29,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.osnovaprj.R
-import com.example.osnovaprj.ui.screen.registration.component.CheckBox
+
 import com.example.osnovaprj.ui.screen.signIn.component.AuthButton
 import com.example.osnovaprj.ui.screen.signIn.component.AuthNameTextField
 import com.example.osnovaprj.ui.screen.signIn.component.AuthPasswordTextField
 import com.example.osnovaprj.ui.screen.signIn.component.AuthTextField
 import com.example.osnovaprj.ui.screen.signIn.component.TitleWithSubtitleText
 import com.example.osnovaprj.ui.theme.MatuleTheme
-import com.example.osnovaprj.ui.screen.registration.component.CheckBox
+
 
 
 @Composable
@@ -67,7 +74,13 @@ fun Registration(){
             ){
                 Text(text = stringResource(R.string.ac_join),
                     style = MatuleTheme.typography.bodyRegular16.copy(color = MatuleTheme.colors.text),
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .clickable(
+                            onClick = {
+
+                            }
+                        )
                 )
             }
         }
@@ -151,9 +164,34 @@ fun Registration(){
                 }
             )
 
-                CheckBox(
-                    checked = checkedState.value
+            val isChecked = remember { mutableStateOf(false) }
+            Row(
+                modifier = Modifier
+                    .padding(horizontal = 10.dp)
+
+            ) {
+                Checkbox(
+
+                    checked = isChecked.value,
+                    onCheckedChange = { isChecked.value = it },
+                    enabled = true,
+                    colors = CheckboxDefaults.colors(
+                        checkedColor = MatuleTheme.colors.accent
+                    )
+
                 )
+                Text(
+                    style = MatuleTheme.typography.bodyRegular16.copy(color = Color.Gray),
+                    textDecoration = TextDecoration.Underline,
+                    text = stringResource(R.string.soglasie),
+                    modifier = Modifier
+                        .clickable(
+                            onClick = {}
+                        )
+
+
+                )
+            }
 
 
             AuthButton(onClick ={} ) {
