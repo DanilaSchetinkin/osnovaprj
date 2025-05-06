@@ -19,4 +19,10 @@
     <string name="Registration_button">Зарегистрироваться</string>
     <string name="soglasie">Даю согласие на обработку персональных данных</string>
     <string name="send">Отправить</string>
+    <string name="fon">Фон</string>
+    <string name="email_icon">Иконка email</string>
+    <string name="check_your_email">Проверьте ваш Email</string>
+    <string name="send_code">Мы отправили код восстановления \nпароля на вашу электронную почту.</string>
+    <string name="forgot_password">Забыл Пароль</string>
+    <string name="input_account">Введите Свою Учетную Запись Для Сброса</string>
 </resources>
