@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.osnovaprj"
-        minSdk = 31
+        minSdk = 26
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -28,8 +28,10 @@ android {
         }
     }
     compileOptions {
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+
     }
     kotlinOptions {
         jvmTarget = "11"
@@ -41,6 +43,7 @@ android {
 
 dependencies {
 
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.3")
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
 
@@ -52,6 +55,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.ads.mobile.sdk)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
