@@ -83,13 +83,7 @@ fun CheckCodeContent(paddingValues: PaddingValues, checkCodeViewModel: CheckCode
             modifier = Modifier.padding(bottom = 8.dp)
         )
 
-        Surface(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(Color.White)
-                .padding(20.dp),
-            color = Color.White
-        ) {
+        Column(modifier = Modifier.padding(20.dp)) {
             var otpValue by remember {
                 mutableStateOf("")
             }
@@ -102,6 +96,22 @@ fun CheckCodeContent(paddingValues: PaddingValues, checkCodeViewModel: CheckCode
 
                 }
             )
+
         }
+
+        Row(modifier = Modifier
+            .padding(horizontal = 16.dp)
+            .fillMaxWidth())
+        {
+            ButtonTime()
+        }
+
+
+
+
+
     }
+
+
+
 }
