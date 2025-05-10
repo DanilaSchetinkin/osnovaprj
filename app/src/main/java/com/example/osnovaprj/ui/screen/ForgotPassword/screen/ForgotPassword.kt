@@ -37,7 +37,7 @@ import com.example.osnovaprj.ui.theme.MatuleTheme
 import kotlinx.coroutines.delay
 
 @Composable
-fun ForgotPassword(){
+fun ForgotPassword(onBackClick: () -> Unit){
     val forgotPasswordViewModel: ForgotPasswordViewModel = viewModel()
     val showEmailSentDialog = remember { mutableStateOf(false) }
 
@@ -49,7 +49,7 @@ fun ForgotPassword(){
                     .fillMaxWidth()
                     .height(40.dp)
             ) {
-                IconButton(onClick = {}) {
+                IconButton(onClick = onBackClick) {
                     Icon(
                         painter = painterResource(R.drawable.back_arrow),
                         contentDescription = null

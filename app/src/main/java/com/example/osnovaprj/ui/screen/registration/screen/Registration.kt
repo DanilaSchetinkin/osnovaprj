@@ -44,7 +44,7 @@ import com.example.osnovaprj.ui.theme.MatuleTheme
 
 
 @Composable
-fun Registration(){
+fun Registration(onBackClick: () -> Unit){
     val registrationViewModel: RegistrationViewModel = viewModel()
     Scaffold(
         topBar = {

@@ -1,6 +1,5 @@
 package com.example.osnovaprj.ui.screen.signIn.screen
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -20,7 +19,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -30,9 +28,14 @@ import com.example.osnovaprj.ui.screen.signIn.component.AuthPasswordTextField
 import com.example.osnovaprj.ui.screen.signIn.component.TitleWithSubtitleText
 import com.example.osnovaprj.ui.theme.MatuleTheme
 import com.example.osnovaprj.ui.screen.signIn.component.AuthTextField
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class  One(val sampleText:String)
 
 @Composable
-fun SignInScreen(){
+fun SignInScreen(onNavigationToRegistration: () -> Unit,
+                 onNavigationToForgotPassword: () -> Unit){
     val signInViewModel: SignInViewModel = viewModel()
     Scaffold(
         topBar = {
@@ -62,20 +65,24 @@ fun SignInScreen(){
                 textAlign = TextAlign.Center,
                     modifier = Modifier
                         .clickable (
-                            onClick ={}
+                            onClick = onNavigationToRegistration
                         )
 
                 )
             }
         }
     ) { paddingValues ->
-        SignInContent(paddingValues, signInViewModel)
+        SignInContent(paddingValues, signInViewModel, onNavigationToForgotPassword)
     }
 
 }
 
 @Composable
-fun SignInContent(paddingValues: PaddingValues, signInViewModel: SignInViewModel){
+fun SignInContent(
+    paddingValues: PaddingValues,
+    signInViewModel: SignInViewModel,
+    onNavigationToForgotPassword: () -> Unit
+){
     val signInState = signInViewModel.signInState
     Column(
         modifier = Modifier.padding(paddingValues = paddingValues),
@@ -150,7 +157,7 @@ fun SignInContent(paddingValues: PaddingValues, signInViewModel: SignInViewModel
 
                         .height(16.dp)
                         .clickable(
-                            onClick = {}
+                            onClick = onNavigationToForgotPassword
                         )
                 )
             }
