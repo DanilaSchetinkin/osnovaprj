@@ -37,9 +37,21 @@ import com.example.osnovaprj.ui.theme.MatuleTheme
 import kotlinx.coroutines.delay
 
 @Composable
-fun ForgotPassword(onBackClick: () -> Unit){
+fun ForgotPassword(
+    onNavigationToCheckCode: () -> Unit,
+    onBackClick: () -> Unit){
     val forgotPasswordViewModel: ForgotPasswordViewModel = viewModel()
     val showEmailSentDialog = remember { mutableStateOf(false) }
+
+    if (showEmailSentDialog.value) {
+        LaunchedEffect(showEmailSentDialog.value) {
+            delay(3000)
+            showEmailSentDialog.value = false
+            onNavigationToCheckCode()
+        }
+    }
+
+
 
     Scaffold(
         topBar = {
@@ -63,7 +75,7 @@ fun ForgotPassword(onBackClick: () -> Unit){
             onEmailSent = {showEmailSentDialog.value = true}
         )
         if (showEmailSentDialog.value){
-            EmailSentDialog(onDismiss = { showEmailSentDialog.value = false})
+            EmailSentDialog(onDismiss = { onNavigationToCheckCode()})
         }
     }
 
@@ -71,11 +83,13 @@ fun ForgotPassword(onBackClick: () -> Unit){
 
 @Composable
 fun EmailSentDialog(
+
     onDismiss:() -> Unit
 ) {
     LaunchedEffect(Unit) {
         delay(3000L)
         onDismiss()
+
     }
     AlertDialog(
         onDismissRequest = onDismiss,

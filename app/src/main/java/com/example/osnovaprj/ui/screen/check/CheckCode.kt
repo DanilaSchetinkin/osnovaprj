@@ -35,7 +35,9 @@ import com.example.osnovaprj.ui.screen.signIn.component.TitleWithSubtitleText
 import com.example.osnovaprj.ui.theme.MatuleTheme
 
 @Composable
-fun CheckCode() {
+fun CheckCode(
+    onBackClick: () -> Unit
+) {
     val checkCodeViewModel: CheckCodeViewModel = viewModel()
 
     Scaffold(
@@ -46,7 +48,7 @@ fun CheckCode() {
                     .fillMaxWidth()
                     .height(40.dp)
             ) {
-                IconButton(onClick = {}) {
+                IconButton(onClick = onBackClick) {
                     Icon(
                         painter = painterResource(R.drawable.back_arrow),
                         contentDescription = null

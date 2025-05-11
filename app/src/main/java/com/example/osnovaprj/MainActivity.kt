@@ -10,7 +10,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.osnovaprj.ui.screen.ForgotPassword.screen.ForgotPassword
 import com.example.osnovaprj.ui.screen.check.CheckCode
 import com.example.osnovaprj.ui.screen.registration.screen.Registration
-import com.example.osnovaprj.ui.screen.signIn.screen.One
+
 import com.example.osnovaprj.ui.screen.signIn.screen.SignInScreen
 import com.example.osnovaprj.ui.theme.MatuleTheme
 import org.w3c.dom.Text
@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
                     navController = navController,
                     startDestination = "signIn"
                 ) {
-                    // Здесь будут определены все маршруты
+
                     composable("signIn") {
 
 
@@ -46,6 +46,9 @@ class MainActivity : ComponentActivity() {
                         Registration(
                             onBackClick = {
                                 navController.popBackStack()
+                            },
+                            onNavigationToSignInScreen = {
+                                navController.navigate("signIn")
                             }
                         )
                     }
@@ -53,16 +56,19 @@ class MainActivity : ComponentActivity() {
                         ForgotPassword(
                             onBackClick = {
                                 navController.popBackStack()
+                            },
+                            onNavigationToCheckCode = {
+                                navController.navigate("checkCode")
                             }
                         )
                     }
-                    /*composable("checkCode") {
+                    composable("checkCode") {
                         CheckCode(
                             onBackClick = {
                                 navController.popBackStack()
                             }
                         )
-                    }*/
+                    }
                 }
             }
         }

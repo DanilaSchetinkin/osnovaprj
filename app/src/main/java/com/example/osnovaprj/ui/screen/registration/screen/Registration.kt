@@ -44,7 +44,9 @@ import com.example.osnovaprj.ui.theme.MatuleTheme
 
 
 @Composable
-fun Registration(onBackClick: () -> Unit){
+fun Registration(
+    onNavigationToSignInScreen: () -> Unit,
+    onBackClick: () -> Unit){
     val registrationViewModel: RegistrationViewModel = viewModel()
     Scaffold(
         topBar = {
@@ -54,7 +56,7 @@ fun Registration(onBackClick: () -> Unit){
                     .fillMaxWidth()
                     .height(40.dp)
             ) {
-                IconButton(onClick = {}) {
+                IconButton(onClick = onBackClick) {
                     Icon(
                         painter = painterResource(R.drawable.back_arrow),
                         contentDescription = null
@@ -77,9 +79,7 @@ fun Registration(onBackClick: () -> Unit){
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .clickable(
-                            onClick = {
-
-                            }
+                            onClick = onNavigationToSignInScreen
                         )
                 )
             }

@@ -28,10 +28,9 @@ import com.example.osnovaprj.ui.screen.signIn.component.AuthPasswordTextField
 import com.example.osnovaprj.ui.screen.signIn.component.TitleWithSubtitleText
 import com.example.osnovaprj.ui.theme.MatuleTheme
 import com.example.osnovaprj.ui.screen.signIn.component.AuthTextField
-import kotlinx.serialization.Serializable
 
-@Serializable
-data class  One(val sampleText:String)
+
+
 
 @Composable
 fun SignInScreen(onNavigationToRegistration: () -> Unit,
