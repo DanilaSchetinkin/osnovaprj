@@ -26,4 +26,5 @@
     <string name="forgot_password">Забыл Пароль</string>
     <string name="input_account">Введите Свою Учетную Запись Для Сброса</string>
     <string name="plscheckmail">Пожалуйста, проверьте свою\n электронную почту, чтобы увидеть код подтверждения</string>
+    <string name="Glavnaya">Главная</string>
 </resources>
