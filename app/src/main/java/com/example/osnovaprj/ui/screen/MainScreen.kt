@@ -80,7 +80,9 @@ fun MainScreen() {
         },
         bottomBar = {
             Row(
-                modifier = Modifier.background(backgroundColor)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(backgroundColor)
             ) {
                 Image(
                     painter = painterResource(R.drawable.bottombb),
@@ -89,7 +91,7 @@ fun MainScreen() {
             }
         },
         content = { innerPadding ->
-            // Основное содержимое экрана
+
             MainScreenContent(
                 modifier = Modifier
                     .padding(innerPadding)
@@ -102,8 +104,7 @@ fun MainScreen() {
 
 @Composable
 fun MainScreenContent(modifier: Modifier = Modifier) {
-    // Здесь должно быть основное содержимое вашего экрана
-    // Например:
+
     Text(
         text = "Основное содержимое экрана",
         modifier = modifier
@@ -112,5 +113,5 @@ fun MainScreenContent(modifier: Modifier = Modifier) {
 
 @Composable
 fun TopAppBar() {
-    // Реализация вашего TopAppBar, если она нужна отдельно
+
 }
