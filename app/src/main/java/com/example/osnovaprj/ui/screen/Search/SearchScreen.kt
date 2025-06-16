@@ -32,9 +32,10 @@ import androidx.compose.ui.unit.dp
 import com.example.osnovaprj.R
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Preview
 @Composable
-fun SearchScreen() {
+fun SearchScreen(
+    onBackClick: () -> Unit
+) {
     var searchQuery by remember { mutableStateOf("") }
 
     val searchHistory = remember {
@@ -47,7 +48,7 @@ fun SearchScreen() {
                 title = {
                     Text("Поиск") },
                 navigationIcon = {
-                    IconButton(onClick = {}) {
+                    IconButton(onClick = onBackClick) {
                         Icon(contentDescription = "Стрелка",
                             painter = painterResource(R.drawable.back_arrow)
                         )

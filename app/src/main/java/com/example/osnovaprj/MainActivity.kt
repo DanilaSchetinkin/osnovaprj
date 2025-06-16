@@ -16,6 +16,8 @@ import com.example.osnovaprj.ui.theme.MatuleTheme
 import org.w3c.dom.Text
 import androidx.navigation.compose.composable
 import androidx.compose.runtime.Composable
+import com.example.osnovaprj.ui.screen.Search.SearchScreen
+import com.example.osnovaprj.ui.screen.userScreen.MainScreen
 
 
 class MainActivity : ComponentActivity() {
@@ -39,6 +41,9 @@ class MainActivity : ComponentActivity() {
                             },
                             onNavigationToForgotPassword = {
                                 navController.navigate("forgotPassword")
+                            },
+                            onNaviationToMainScreen = {
+                                navController.navigate("mainScreen")
                             }
                         )
                     }
@@ -66,6 +71,20 @@ class MainActivity : ComponentActivity() {
                         CheckCode(
                             onBackClick = {
                                 navController.popBackStack()
+                            }
+                        )
+                    }
+                    composable("mainScreen"){
+                        MainScreen(
+                                onSearchClick = {
+                                    navController.navigate("searchScreen")
+                                }
+                        )
+                    }
+                    composable("searchScreen"){
+                        SearchScreen(
+                            onBackClick = {
+                                navController.navigate("mainScreen")
                             }
                         )
                     }
