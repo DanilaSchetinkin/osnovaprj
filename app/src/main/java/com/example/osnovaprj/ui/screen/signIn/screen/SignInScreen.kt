@@ -34,7 +34,8 @@ import com.example.osnovaprj.ui.screen.signIn.component.AuthTextField
 
 @Composable
 fun SignInScreen(onNavigationToRegistration: () -> Unit,
-                 onNavigationToForgotPassword: () -> Unit){
+                 onNavigationToForgotPassword: () -> Unit,
+                 onNaviationToMainScreen: ()-> Unit){
     val signInViewModel: SignInViewModel = viewModel()
     Scaffold(
         topBar = {
@@ -71,7 +72,7 @@ fun SignInScreen(onNavigationToRegistration: () -> Unit,
             }
         }
     ) { paddingValues ->
-        SignInContent(paddingValues, signInViewModel, onNavigationToForgotPassword)
+        SignInContent(paddingValues, signInViewModel, onNavigationToForgotPassword, onNaviationToMainScreen)
     }
 
 }
@@ -80,7 +81,8 @@ fun SignInScreen(onNavigationToRegistration: () -> Unit,
 fun SignInContent(
     paddingValues: PaddingValues,
     signInViewModel: SignInViewModel,
-    onNavigationToForgotPassword: () -> Unit
+    onNavigationToForgotPassword: () -> Unit,
+    onNaviationToMainScreen: () -> Unit
 ){
     val signInState = signInViewModel.signInState
     Column(
@@ -161,7 +163,7 @@ fun SignInContent(
                 )
             }
          AuthButton(
-             onClick = {}
+             onClick = onNaviationToMainScreen
          ) {
              Text(stringResource(R.string.sign_in))
          }
