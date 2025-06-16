@@ -37,6 +37,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.osnovaprj.R
 import com.example.osnovaprj.ui.screen.Card.CardState
 import com.example.osnovaprj.ui.screen.Card.KrossovokCard
@@ -47,6 +48,7 @@ import com.google.android.gms.analytics.ecommerce.Product
 
 @Composable
 fun MainScreen(
+    navController: NavController,
     onSearchClick: () -> Unit
 ) {
     var selectedCategory = remember { mutableStateOf("Все") }
@@ -96,10 +98,7 @@ fun MainScreen(
                 }
             }
         },
-        bottomBar = {
 
-           BottomBar()
-        },
         content = { innerPadding ->
 
             MainScreenContent(

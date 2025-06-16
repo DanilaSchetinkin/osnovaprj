@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -26,99 +27,86 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.osnovaprj.R
-import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
-@Preview
+
+
 @Composable
-fun BottomBar() {
+fun BottomBar(navController: NavController) {
     Box(
-        modifier = Modifier.fillMaxWidth().background(Color(0xFFF5F5F5))
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(Color(0xFFF5F5F5))
     ) {
-
-
         Image(
-
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth()
+                ,
             painter = painterResource(R.drawable.bottombb),
             contentDescription = "Bottom Bar",
             contentScale = ContentScale.FillWidth
-
-
         )
 
         Row(
-            horizontalArrangement = Arrangement.SpaceBetween,
+            horizontalArrangement = Arrangement.SpaceAround,
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 31.dp, vertical = 52.dp)
-
-
-                ){
-
-
-
-            Image(
-
-                contentDescription = "home",
-                painter = painterResource(R.drawable.home_2),
-                modifier = Modifier
-                    .clickable {  }
-            )
+        ) {
             IconButton(
-                onClick = {}
+                onClick = { navController.navigate("mainScreen") },
+                modifier = Modifier.size(24.dp)
             ) {
-                Icon(contentDescription = "heart",
-                    painter = painterResource(R.drawable.icon))
+                Image(
+                    painter = painterResource(R.drawable.home_2),
+                    contentDescription = "home"
+                )
             }
 
-
-            Spacer(modifier = Modifier.width(56.dp))
-
-
             IconButton(
-                onClick = {}
-
-            )
-            {
-                Icon(painter = painterResource(R.drawable.bell),
-                    contentDescription = "bell",
-                    )
-            }
-
-
-
-
-            IconButton(
-                onClick = {}
+                onClick = { navController.navigate("popularScreen") },
+                modifier = Modifier.size(24.dp)
             ) {
-                Icon(contentDescription = "chel",
-                    painter = painterResource(R.drawable.chel),)
-
+                Icon(
+                    painter = painterResource(R.drawable.icon),
+                    contentDescription = "heart"
+                )
             }
 
+            Spacer(modifier = Modifier.width(48.dp))
 
+            IconButton(onClick = {},
+                modifier = Modifier.size(24.dp)) {
+                Icon(
+                    painter = painterResource(R.drawable.bell),
+                    contentDescription = "bell"
+                )
+            }
 
+            IconButton(onClick = {},
+                modifier = Modifier.size(24.dp)) {
+                Icon(
+                    painter = painterResource(R.drawable.chel),
+                    contentDescription = "chel"
+                )
+            }
         }
 
         Box(
-
-            Modifier.fillMaxWidth()
-                .align(Alignment.TopCenter)
-                .offset(y = (+5).dp)
-                ,
+            modifier = Modifier
+                .fillMaxWidth()
+                .offset(y = 5.dp),
             contentAlignment = Alignment.Center
-
-
-        )
-        {
-            IconButton(onClick ={},
+        ) {
+            IconButton(
+                onClick = {},
                 colors = IconButtonDefaults.iconButtonColors(containerColor = Color(0xFF48B2E7))
-                ) {
-                Icon(contentDescription = "korzina",
-                    tint = Color.White ,
-                   painter =  painterResource(R.drawable.cumka)
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.cumka),
+                    contentDescription = "korzina",
+                    tint = Color.White
                 )
             }
         }
